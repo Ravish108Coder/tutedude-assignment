@@ -13,9 +13,11 @@ dotenv.config()
 // middlewares fixed use
 // app.use(cors()); // use for cross origin resource sharing
 // app.options('*', cors());
+// console.log(process.env.FRONTEND_URI)
 app.use(
     cors({
       origin: process.env.FRONTEND_URI,
+      // origin: 'www.example.com',
       methods: ["GET", "POST", "PUT", "DELETE"],
       credentials: true,
     })
