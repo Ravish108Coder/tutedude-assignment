@@ -3,37 +3,9 @@ import { CertificateRequest } from '../models/certificateRequest.model.js';
 import { isAuthenticated } from '../middlewares/auth.js';
 import { Certificate } from '../models/certificate.model.js';
 import { fillPDF } from '../utils/certificateMaker.js';
-const router = Router()
-import dotenv from 'dotenv'
-dotenv.config()
-
-import {google} from 'googleapis'
-import path from 'path'
-import fs from 'fs'
 import { uploadFile } from '../utils/drive.js';
+const router = Router()
 
-const __dirname = path.resolve();
-
-const CLIENT_ID = process.env.CLIENT_ID
-const CLIENT_SECRET = process.env.CLIENT_SECRET
-const REDIRECT_URI = process.env.REDIRECT_URI
-
-const REFRESH_TOKEN = process.env.REFRESH_TOKEN
-
-const oauth2Client = new google.auth.OAuth2(
-    CLIENT_ID,
-    CLIENT_SECRET,
-    REDIRECT_URI
-);
-
-oauth2Client.setCredentials({refresh_token: REFRESH_TOKEN})
-
-const drive = google.drive({
-    version: 'v3',
-    auth: oauth2Client
-})
-
-const filePath = path.join(__dirname, 'output.pdf')
 
 router.use(isAuthenticated)
 
@@ -110,11 +82,12 @@ router.post('/isAlreadyRequested', async (req, res) => {
 router.post('/approveAndCreate', async(req, res)=>{
     try {
         const {course_name, student_name, course_completed, student_email} = req.body
-        // console.log(req.body)
+        console.log(req.body)
         const newCertificate = await Certificate.create({
             student_email: student_email,
             course_name: course_name
         })
+        console.log(newCertificate)
 
         const certificate_id = newCertificate._id;
         const pdfName = String(student_name).replace(/ /g, '_') + `_` + String(course_name).replace(/ /g, '_') + 'Course_Certificate.pdf'

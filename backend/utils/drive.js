@@ -4,11 +4,16 @@ import fs from 'fs'
 
 const __dirname = path.resolve();
 
-const CLIENT_ID = '950819802897-an92tjha70emldnsthu55vln1sfjpd4q.apps.googleusercontent.com'
-const CLIENT_SECRET = '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'
-const REDIRECT_URI = 'https://developers.google.com/oauthplayground'
+import dotenv from 'dotenv'
+dotenv.config()
 
-const REFRESH_TOKEN = '1//04_27syD1fyqPCgYIARAAGAQSNwF-L9IrWEQMJy59DryxuJmbjJcBEXlXFN3zGP1wZEJv4R81caI5veLZOcemtqPZuLCKaIB25PY'
+const CLIENT_ID = process.env.CLIENT_ID
+const CLIENT_SECRET = process.env.CLIENT_SECRET
+const REDIRECT_URI = process.env.REDIRECT_URI
+
+const REFRESH_TOKEN = process.env.REFRESH_TOKEN
+
+
 
 const oauth2Client = new google.auth.OAuth2(
     CLIENT_ID,
@@ -27,6 +32,7 @@ const filePath = path.join(__dirname, 'output.pdf')
 
 export async function uploadFile(pdfName) {
   try {
+    console.log(CLIENT_ID, CLIENT_SECRET, REDIRECT_URI, REFRESH_TOKEN)
         const response = await drive.files.create({
             requestBody: {
                 name: pdfName,
