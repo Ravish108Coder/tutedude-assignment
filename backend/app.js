@@ -12,7 +12,7 @@ dotenv.config()
 
 // middlewares fixed use
 // app.use(cors()); // use for cross origin resource sharing
-app.options('*', cors());
+// app.options('*', cors());
 app.use(
     cors({
       origin: '*',
