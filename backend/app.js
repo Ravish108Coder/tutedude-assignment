@@ -11,15 +11,15 @@ dotenv.config()
 
 
 // middlewares fixed use
-app.use(cors()); // use for cross origin resource sharing
-// app.options('*', cors());
-// app.use(
-//     cors({
-//       origin: process.env.FRONTEND_URI,
-//       methods: ["GET", "POST", "PUT", "DELETE"],
-//       credentials: true,
-//     })
-//   );
+// app.use(cors()); // use for cross origin resource sharing
+app.options('*', cors());
+app.use(
+    cors({
+      origin: '*',
+      methods: ["GET", "POST", "PUT", "DELETE"],
+      credentials: true,
+    })
+  );
 app.use(express.json()); // use for parsing application/json
 app.use(express.urlencoded({ extended: true })); // use for parsing application/x-www-form-urlencoded
 app.use(cookieParser()); // use for parsing cookies
