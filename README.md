@@ -37,9 +37,9 @@ This project is a MERN (MongoDB, Express.js, React.js, Node.js) stack applicatio
 
    ```bash
    cd frontend
-   npm install
+   npm run dev
    cd ../backend
-   npm install
+   npm run dev
    ```
 
 3. Set up environment variables:
@@ -58,7 +58,7 @@ This project is a MERN (MongoDB, Express.js, React.js, Node.js) stack applicatio
    npm start
    ```
 
-5. Open your browser and navigate to `http://localhost:3000` to view the application.
+5. Open your browser and navigate to `http://localhost:5173` to view the application.
 
 ## Usage
 
