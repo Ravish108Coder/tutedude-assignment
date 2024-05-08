@@ -17,7 +17,8 @@ const AllCertficates = () => {
         try {
             const response = await fetch(`${import.meta.env.VITE_SERVER}/api/certificates/made/all`,{
                 headers: {
-                    Authorization: `Bearer ${localStorage.getItem("token")}`
+                    Authorization: `Bearer ${localStorage.getItem("token")}`,
+                    'Access-Control-Allow-Origin': '*'
                 }
             })
             const data = await response.json();

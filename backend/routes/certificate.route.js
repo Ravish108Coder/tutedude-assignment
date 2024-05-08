@@ -82,12 +82,12 @@ router.post('/isAlreadyRequested', async (req, res) => {
 router.post('/approveAndCreate', async(req, res)=>{
     try {
         const {course_name, student_name, course_completed, student_email} = req.body
-        console.log(req.body)
+        // console.log(req.body)
         const newCertificate = await Certificate.create({
             student_email: student_email,
             course_name: course_name
         })
-        console.log(newCertificate)
+        // console.log(newCertificate)
 
         const certificate_id = newCertificate._id;
         const pdfName = String(student_name).replace(/ /g, '_') + `_` + String(course_name).replace(/ /g, '_') + 'Course_Certificate.pdf'
