@@ -36,10 +36,7 @@ This project is a MERN (MongoDB, Express.js, React.js, Node.js) stack applicatio
 2. Install dependencies:
 
    ```bash
-   cd frontend
-   npm run dev
-   cd ../backend
-   npm run dev
+   express mongoose cookie-parser pdf-lib googleapis
    ```
 
 3. Set up environment variables:
