@@ -106,9 +106,11 @@ function CourseCard({ course }) {
                 credentials: 'include'
             });
             const data = await response.json();
+            alert('Your request has gone to admin for approval. Once it will be approved you can see it in my certificates section')
             setIsAlreadyRequested(true)
             console.log(data);
         } catch (error) {
+            alert('Your request failed')
             console.log(error.message);
         }
     };
